@@ -14,11 +14,12 @@ class File:
 
 
 @dataclasses.dataclass
-class FileResult:
+class FileUpload:
     """
-    Dataclass representing the result of a file processing.
+    Dataclass representing the result of a file upload.
     """
 
+    file: File
     result: str
     rows: int | None = None
     error_message: str | None = None
@@ -36,7 +37,7 @@ class FileProcessor:
 
     @classmethod
     @abc.abstractmethod
-    def process(cls, file: File, filename: str, data, user_params: dict | None) -> FileResult:
+    def process(cls, file: File, filename: str, data, user_params: dict | None) -> FileUpload:
         """
         Process a file using the file processor.
 

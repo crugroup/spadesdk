@@ -18,6 +18,7 @@ class RunResult:
     Base class for the result of a process run.
     """
 
+    process: Process
     status: str
     result: str | None = None
     error_message: str | None = None
