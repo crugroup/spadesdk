@@ -1,5 +1,7 @@
 import abc
 import dataclasses
+from datetime import datetime
+from enum import Enum
 
 
 @dataclasses.dataclass
@@ -18,17 +20,24 @@ class RunResult:
     Base class for the result of a process run.
     """
 
+    class Status(Enum):
+        NEW = "new"
+        RUNNING = "running"
+        FINISHED = "finished"
+        FAILED = "failed"
+
+    class Result(Enum):
+        SUCCESS = "success"
+        WARNING = "warning"
+        FAILED = "failed"
+
     process: Process
-    status: str
-    result: str | None = None
+    status: Status
+    result: Result | None = None
     error_message: str | None = None
     output: dict | None = None
-
-    def __post_init__(self):
-        if self.status not in ("new", "running", "finished", "failed"):
-            raise ValueError("status must be one of 'new', 'running', 'finished', or 'failed'")
-        if self.result and self.result not in ("success", "warning", "failed"):
-            raise ValueError("result must be one of 'success', 'warning', or 'failed'")
+    created_at: datetime | None = None
+    user_id: int | None = None
 
 
 class Executor:
@@ -40,12 +49,13 @@ class Executor:
 
     @classmethod
     @abc.abstractmethod
-    def run(cls, process: Process, user_params: dict) -> RunResult:
+    def run(cls, process: Process, user_params: dict, user_id: int) -> RunResult:
         """
         Execute a process using the executor.
 
         :param process: Process to run and its system parameters
         :param user_params: User parameters - provided by the user when running the process
+        :param user_id: The id of the user running the process
 
         :return: RunResult
         """

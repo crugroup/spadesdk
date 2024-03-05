@@ -1,5 +1,6 @@
 import abc
 import dataclasses
+from enum import Enum
 
 
 @dataclasses.dataclass
@@ -19,15 +20,16 @@ class FileUpload:
     Dataclass representing the result of a file upload.
     """
 
+    class Result(Enum):
+        SUCCESS = "success"
+        WARNING = "warning"
+        FAILED = "failed"
+
     file: File
-    result: str
+    result: Result
     rows: int | None = None
     error_message: str | None = None
     output: dict | None = None
-
-    def __post_init__(self):
-        if self.result not in ("success", "warning", "failed"):
-            raise ValueError("result must be one of 'success', 'warning', or 'failed'")
 
 
 class FileProcessor:
