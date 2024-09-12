@@ -2,6 +2,8 @@ import abc
 import dataclasses
 from enum import Enum
 
+from spadesdk.user import User
+
 
 @dataclasses.dataclass
 class File:
@@ -39,7 +41,7 @@ class FileProcessor:
 
     @classmethod
     @abc.abstractmethod
-    def process(cls, file: File, filename: str, data, user_params: dict | None) -> FileUpload:
+    def process(cls, file: File, filename: str, data, user_params: dict | None, user: User, *args, **kwargs) -> FileUpload:
         """
         Process a file using the file processor.
 
