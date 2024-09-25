@@ -3,6 +3,8 @@ import dataclasses
 from datetime import datetime
 from enum import Enum
 
+from spadesdk.user import User
+
 
 @dataclasses.dataclass
 class Process:
@@ -49,7 +51,7 @@ class Executor:
 
     @classmethod
     @abc.abstractmethod
-    def run(cls, process: Process, user_params: dict, user_id: int) -> RunResult:
+    def run(cls, process: Process, user_params: dict, user: User, *args, **kwargs) -> RunResult:
         """
         Execute a process using the executor.
 
