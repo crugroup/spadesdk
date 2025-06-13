@@ -42,7 +42,7 @@ class RunResult:
     user_id: int | None = None
 
 
-class Executor:
+class Executor(metaclass=abc.ABCMeta):
     """
     Executor executes a Spade process using the run method.
     It can either directly run some code or call an external service,

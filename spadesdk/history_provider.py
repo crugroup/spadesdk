@@ -4,7 +4,7 @@ import typing
 from spadesdk.executor import Process, RunResult
 
 
-class HistoryProvider:
+class HistoryProvider(metaclass=abc.ABCMeta):
     """
     HistoryProvider can provide a history of process runs from an external service.
     """

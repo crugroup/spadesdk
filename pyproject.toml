@@ -5,7 +5,7 @@ authors = [
 ]
 description = "Spade SDK"
 requires-python = ">=3.11"
-version = "0.3.0"
+version = "0.4.0"
 readme = "README.md"
 license = { file = "LICENSE.txt" }
 
@@ -17,3 +17,8 @@ line-length = 120
 
 [tool.ruff]
 line-length = 120
+
+[project.optional-dependencies]
+pandera = [
+    "pandera[io,pandas]>=0.24.0",
+]
