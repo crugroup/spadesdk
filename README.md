@@ -20,6 +20,14 @@ For file validation functionality, install with the `pandera` extra:
 pip install spadesdk[pandera]
 ```
 
+## Usage
+
+All core classes are available directly from the top-level package:
+
+```python
+from spadesdk import Executor, Process, RunResult, File, FileProcessor, FileUpload, HistoryProvider, User
+```
+
 ## Basic objects
 
 ### FileProcessor
@@ -41,7 +49,7 @@ against a Frictionless schema defined in the `File` object.
 FileProcessor.validate(file, dataframe)
 ```
 
-**Note:** If Pandera is not installed, calling the `validate` method will raise an `ImportError`.
+**Note:** If Pandera is not installed, calling the `validate` method will raise an `ImportError`. If `file.schema` is `None`, a `ValueError` is raised.
 
 ### Executor
 
