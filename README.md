@@ -1,7 +1,7 @@
 # Spade SDK
 
 Spade SDK provides basic classes to implement Spade Files and Processes.
-For more information about Spade, please visit [Spade](https:://getspade.io)
+For more information about Spade, please visit [Spade](https://getspade.io)
 
 It has no dependencies on other Python libraries, and allows development for Spade without
 a need to install the full Spade app.
@@ -53,3 +53,7 @@ calling an external service.
 `HistoryProvider` provides the history of a Spade from if the actual process is executed
 by an external service. If the process is executed in Spade, a `HistoryProvider` is not
 needed.
+
+**Note:** The `get_runs()` method receives a `request` parameter that is expected to be
+a Django HTTP request object. `HistoryProvider` implementations are therefore coupled to
+Django.

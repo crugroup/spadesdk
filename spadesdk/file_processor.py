@@ -73,5 +73,8 @@ class FileProcessor(metaclass=abc.ABCMeta):
         if not PANDERA_PRESENT:
             raise ImportError("Pandera is not installed. Please install spadesdk[pandera].")
 
+        if file.schema is None:
+            raise ValueError("File schema is not defined. A Frictionless schema must be set on the File object.")
+
         schema = from_frictionless_schema(file.schema)
         return schema.validate(dataframe, lazy=True)

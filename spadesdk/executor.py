@@ -39,7 +39,7 @@ class RunResult:
     error_message: str | None = None
     output: dict | None = None
     created_at: datetime | None = None
-    user_id: int | None = None
+    user: User | None = None
 
 
 class Executor(metaclass=abc.ABCMeta):
@@ -57,7 +57,7 @@ class Executor(metaclass=abc.ABCMeta):
 
         :param process: Process to run and its system parameters
         :param user_params: User parameters - provided by the user when running the process
-        :param user_id: The id of the user running the process
+        :param user: The User running the process
 
         :return: RunResult
         """
