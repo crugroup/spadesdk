@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Public API exports in `spadesdk/__init__.py` — all core classes now importable from the top-level package (`Executor`, `Process`, `RunResult`, `File`, `FileProcessor`, `FileUpload`, `HistoryProvider`, `User`)
 - Test suite with 27 tests covering `Executor`, `FileProcessor`, `HistoryProvider`, `User`, and public API surface
 - `pytest>=8.0` dev dependency in `pyproject.toml`
+- GitHub Actions release workflow — publishes to PyPI on version tag push using OIDC trusted publishing
 
 ### Changed
 - `RunResult.user_id: int | None` renamed to `RunResult.user: User | None` — passes the full `User` object instead of just the ID

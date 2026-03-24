@@ -65,3 +65,14 @@ needed.
 **Note:** The `get_runs()` method receives a `request` parameter that is expected to be
 a Django HTTP request object. `HistoryProvider` implementations are therefore coupled to
 Django.
+
+## Releasing
+
+Releases are published to PyPI automatically via GitHub Actions when a version tag is pushed:
+
+```bash
+git tag 0.5.0
+git push origin 0.5.0
+```
+
+The workflow builds a wheel and sdist with `uv build`, then publishes using OIDC trusted publishing (no API token needed). Requires a `pypi` environment configured in the GitHub repository settings.
