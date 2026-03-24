@@ -39,7 +39,7 @@ class RunResult:
     error_message: str | None = None
     output: dict | None = None
     created_at: datetime | None = None
-    user: User | None = None
+    user_id: int | None = None
 
 
 class Executor(metaclass=abc.ABCMeta):

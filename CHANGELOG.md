@@ -11,7 +11,6 @@ All notable changes to this project will be documented in this file.
 - GitHub Actions release workflow — publishes to PyPI on version tag push using OIDC trusted publishing
 
 ### Changed
-- `RunResult.user_id: int | None` renamed to `RunResult.user: User | None` — passes the full `User` object instead of just the ID
 - `Executor.run()` signature updated: `user_id: int` parameter replaced with `user: User`
 - Pre-commit hooks updated: `pre-commit-hooks` v5.0.0 → v6.0.0, `ruff-pre-commit` v0.11.13 → v0.15.7
 

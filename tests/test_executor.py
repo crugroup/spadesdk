@@ -11,7 +11,7 @@ class ConcreteExecutor(Executor):
             process=process,
             status=RunResult.Status.FINISHED,
             result=RunResult.Result.SUCCESS,
-            user=user,
+            user_id=user.id,
         )
 
 
@@ -32,20 +32,20 @@ def test_run_returns_run_result():
     assert isinstance(result, RunResult)
     assert result.status == RunResult.Status.FINISHED
     assert result.result == RunResult.Result.SUCCESS
-    assert result.user == user
+    assert result.user_id == user.id
 
 
 def test_run_result_user_field():
     process = Process(code="test_process")
     user = User(id=42, email="x@y.com", first_name="Bob", last_name="Jones")
-    result = RunResult(process=process, status=RunResult.Status.NEW, user=user)
-    assert result.user.id == 42
+    result = RunResult(process=process, status=RunResult.Status.NEW, user_id=user.id)
+    assert result.user_id == 42
 
 
 def test_run_result_user_defaults_to_none():
     process = Process(code="test_process")
     result = RunResult(process=process, status=RunResult.Status.NEW)
-    assert result.user is None
+    assert result.user_id is None
 
 
 def test_run_result_status_enum_values():
