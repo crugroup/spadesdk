@@ -57,7 +57,7 @@ class Executor(metaclass=abc.ABCMeta):
 
         :param process: Process to run and its system parameters
         :param user_params: User parameters - provided by the user when running the process
-        :param user_id: The id of the user running the process
+        :param user: The User running the process
 
         :return: RunResult
         """
